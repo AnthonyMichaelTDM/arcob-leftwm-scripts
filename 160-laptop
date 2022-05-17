@@ -47,10 +47,10 @@ tput setaf 3; echo "Installation of laptop software";tput sgr0
 ###############################################################################
 
 tput setaf 3
-read -p "Do you wish to proceed?" -n 1 -r proceedYN
+read -p "Do you wish to proceed? (y\n) " -n 1 -r proceedYN
 tput sgr0
 echo
-case $cursorYN in
+case $proceedYN in
 	y | Y) ##proceed
         ;;
 	*) ##exit
