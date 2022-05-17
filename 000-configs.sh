@@ -239,8 +239,6 @@ echo "- remove leftover folders and files, including this script"
 echo "################################################################## "
 ## remove the clone of the configs repo
 rm -rf $CONFIG_DIRECTORY
-## remove this script
-rm -f $THIS_SCRIPT_PATH
 echo "done"
 
 #exit script with success message
