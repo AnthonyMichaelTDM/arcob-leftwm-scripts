@@ -1,35 +1,35 @@
 #!/bin/sh
 
-THIS_SCRIPT_PATH="~/arcob-leftwm-scripts/000-configs"
+THIS_SCRIPT_PATH="/home/${USER}/arcob-leftwm-scripts/000-configs.sh"
 readonly THIS_SCRIPT_PATH
 
 #goto home directory
-cd ~/
+cd /home/${USER}/
 
 #clone my configs from my github repository
 git clone https://github.com/AnthonyMichaelTDM/my-crispy-arcolinux-configs.git
 
 #variables, storing file paths
-CONFIG_DIRECTORY="~/my-crispy-arcolinux-configs/" #for end user: change this to be the directory you stored my configs in
+CONFIG_DIRECTORY="/home/${USER}/my-crispy-arcolinux-configs/" #for end user: change this to be the directory you stored my configs in
 readonly CONFIG_DIRECTORY
 
-LEFTWM_TARGET="~/.config/leftwm/"
+LEFTWM_TARGET="/home/${USER}/.config/leftwm/"
 readonly LEFTWM_TARGET
 
 ZSHRC_PERSONAL_SOURCE="${CONFIG_DIRECTORY}Scripts/clean/.zshrc-personal"
-ZSHRC_PERSONAL_TARGET="~/"
+ZSHRC_PERSONAL_TARGET="/home/${USER}/"
 readonly ZSHRC_PERSONAL_SOURCE
 readonly ZSHRC_PERSONAL_TARGET
 
 CURSOR_SOURCE="${CONFIG_DIRECTORY}Cursors/BloodMoon-Cursor/"
-CURSOR_TARGET="~/.icons"
+CURSOR_TARGET="/home/${USER}/.icons"
 CURSOR_ROOT_TARGET="/usr/share/icons/"
 readonly CURSOR_SOURCE
 readonly CURSOR_TARGET
 readonly CURSOR_ROOT_TARGET
 
 GTK_SOURCE="${CONFIG_DIRECTORY}GTK/BloodMoon/"
-GTK_TARGET="~/.themes"
+GTK_TARGET="/home/${USER}/.themes"
 GTK_ROOT_TARGET="/usr/share/themes/"
 readonly GTK_SOURCE
 readonly GTK_TARGET
@@ -47,18 +47,18 @@ readonly SDDM_SOURCE
 readonly SDDM_TARGET
 readonly SDDM_CONF
 
-GTK3_SETTINGS="~/.config/gtk-3.0/settings.ini"
+GTK3_SETTINGS="/home/${USER}/.config/gtk-3.0/settings.ini"
 readonly GTK3_SETTINGS
 
 ST_SOURCE="${CONFIG_DIRECTORY}arco-st/"
-ST_TARGET="~/.config/"
-ST_MAKE_DIR="~/.config/arco-st/"
+ST_TARGET="/home/${USER}/.config/"
+ST_MAKE_DIR="/home/${USER}/.config/arco-st/"
 readonly ST_SOURCE
 readonly ST_TARGET
 readonly ST_MAKE_DIR
 
 SCRIPTS_SOURCE="${CONFIG_DIRECTORY}/Scripts/"
-SCRIPTS_TARGET="~/.bin/my-scripts/"    
+SCRIPTS_TARGET="/home/${USER}/.bin/my-scripts/"    
 readonly SCRIPT_SOURCE
 readonly SCRIPT_TARGET
 
@@ -207,9 +207,9 @@ case $brightnessYN in
 	n | N) ##modify sxhkdrc of leftwm-theme and .zshrc-personal, also copy the brightness changing script, and make it so that said script can run without needing a sudo password
         
         ###copy brighness changing script
-        cd ~/.bin/
+        cd /home/${USER}/.bin/
         mkdir my-scripts
-        cd ~/
+        cd /home/${USER}/
         cp -f "${SCRIPT_SOURCE}configure-brightness.sh" "${SCRIPT_TARGET}"
         cp -f "${SCRIPT_SOURCE}configure-brightness-README.md" "${SCRIPT_TARGET}"
 
