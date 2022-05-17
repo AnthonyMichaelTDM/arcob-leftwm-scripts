@@ -1,6 +1,6 @@
 #!/bin/sh
 
-THIS_SCRIPT_PATH="~/arcob-leftwm-scripts/000-configs.sh"
+THIS_SCRIPT_PATH="~/arcob-leftwm-scripts/000-configs"
 readonly THIS_SCRIPT_PATH
 
 #goto home directory
