@@ -151,7 +151,7 @@ sudo cp -rf $SDDM_SOURCE $SDDM_TARGET
 echo "done"
 echo "setting SDDM theme to copied theme"
 ###replace the lines that set current sddm config with my sddm config
-sudo sed -i 's/Current=/ # Current=/' $SDDM_CONF
+grep "Current=" /etc/sddm.conf && sudo sed -i '0,/\nCurrent=/s//\nCurrent=BloodMoon # /' /etc/sddm.conf || sudo sed -i '0,/\[Theme\]/s//[Theme]\nCurrent=BloodMoon/' /etc/sddm.conf
 echo "done"
 echo
 
