@@ -28,34 +28,14 @@ readonly CURSOR_SOURCE
 readonly CURSOR_TARGET
 readonly CURSOR_ROOT_TARGET
 
-GTK_SOURCE="${CONFIG_DIRECTORY}GTK/BloodMoon/"
-GTK_TARGET="/home/${USER}/.themes"
-GTK_ROOT_TARGET="/usr/share/themes/"
-readonly GTK_SOURCE
-readonly GTK_TARGET
-readonly GTK_ROOT_TARGET
-
 VIMRC_SOURCE="${CONFIG_DIRECTORY}vimrc"
 VIMRC_TARGET="/etc/"
 readonly VIMRC_SOURCE
 readonly VIMRC_TARGET
 
-SDDM_SOURCE="${CONFIG_DIRECTORY}SDDM/BloodMoon-sugar-candy/"
-SDDM_TARGET="/usr/share/sddm/themes/"
-SDDM_CONF="/etc/sddm.conf"
-readonly SDDM_SOURCE
-readonly SDDM_TARGET
-readonly SDDM_CONF
 
 GTK3_SETTINGS="/home/${USER}/.config/gtk-3.0/settings.ini"
 readonly GTK3_SETTINGS
-
-ST_SOURCE="${CONFIG_DIRECTORY}arco-st/"
-ST_TARGET="/home/${USER}/.config/"
-ST_MAKE_DIR="/home/${USER}/.config/arco-st/"
-readonly ST_SOURCE
-readonly ST_TARGET
-readonly ST_MAKE_DIR
 
 SCRIPTS_SOURCE="${CONFIG_DIRECTORY}/Scripts/"
 SCRIPTS_TARGET="/home/${USER}/.bin/my-scripts/"    
