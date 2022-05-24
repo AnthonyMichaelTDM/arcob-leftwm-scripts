@@ -67,9 +67,6 @@ echo "################################################################## "
 echo "this script will install all my personal configs for a minimal(ish)"
 echo "ArcolinuxB installation, it is intended to be run only once"
 echo "after the first boot into the system"
-echo "- copy vimrc"
-echo "- copy sddm theme"
-echo "- set sddm theme to copied theme"
 echo "################################################################## "
 read -r -p "Press Enter to continue"
 
@@ -79,10 +76,8 @@ echo "Phase 1 : non-optional stuff"
 echo "- install my leftwm theme"
 echo "- copy .zshrc-personal"
 echo "- copy vimrc"
-echo "- copy sddm theme"
-echo "- set sddm theme to copied theme"
 echo "- install and make st"
-echo "- install gtk theme to root user"
+echo "- set gtk theme to bloodmoon"
 echo "################################################################## "
 ##leftwm theme
 echo "installing my leftwm theme"
@@ -145,33 +140,9 @@ sudo cp -f $VIMRC_SOURCE $VIMRC_TARGET
 echo "done"
 echo
 
-##sddm
-echo "copying sddm theme"
-sudo cp -rf $SDDM_SOURCE $SDDM_TARGET
-echo "done"
-echo "setting SDDM theme to copied theme"
-###replace the lines that set current sddm config with my sddm config
-grep "Current=" /etc/sddm.conf && sudo sed -i '0,/Current=*/s//Current=BloodMoon-sugar-candy # /' /etc/sddm.conf || sudo sed -i '0,/\[Theme\]/s//[Theme]\nCurrent=BloodMoon-sugar-candy/' /etc/sddm.conf
-echo "done"
-echo
-
-##st
-echo "install and make st"
-sudo cp -rf $ST_SOURCE $ST_TARGET
-sudo make clean install -C $ST_MAKE_DIR
-echo "done"
-echo
-
 echo "setting GTK theme to my custom theme"
 ###set gtk 
 sudo sed -i 's/gtk-theme-name=/gtk-theme-name=BloodMoon\n# /' $GTK3_SETTINGS
-echo "done"
-echo
-
-## install root user
-echo "copying gtk themes to /usr/share directory"
-###copy gtk themes to the root user
-sudo cp -rf $GTK_SOURCE $GTK_ROOT_TARGET
 echo "done"
 echo
 
