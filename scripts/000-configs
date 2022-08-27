@@ -60,23 +60,23 @@ echo "- install and make st"
 echo "- set gtk theme to bloodmoon"
 echo "################################################################## "
 ##leftwm theme
-echo "installing my leftwm theme"
+#echo "installing my leftwm theme"
 ### install leftwm-theme if it isn't already
-if ! [[ -x "$(command -v leftwm-theme)" ]]; then 
-    echo "    installing leftwm-theme"
-    pamac install leftwm-theme
-fi
+#if ! [[ -x "$(command -v leftwm-theme)" ]]; then 
+#    echo "    installing leftwm-theme"
+#    pamac install leftwm-theme
+#fi
 ### add theme to themes.toml
 #### add repo
-echo "    adding theme to themes.toml"
-printf "
-[[repos]]
-url = \"https://raw.githubusercontent.com/AnthonyMichaelTDM/leftwm-personal-themes/main/known.toml\"
-name = \"Personal\"
-themes = []
-" >> ${LEFTWM_TARGET}themes.toml
+#echo "    adding theme to themes.toml"
+#printf "
+#[[repos]]
+#url = \"https://raw.githubusercontent.com/AnthonyMichaelTDM/leftwm-personal-themes/main/known.toml\"
+#name = \"Personal\"
+#themes = []
+#" >> ${LEFTWM_TARGET}themes.toml
 #### update themes.toml
-leftwm-theme update
+#leftwm-theme update
 ### install dependencies
 echo "    installing dependencies"
 if ! [[ -x "$(command -v wal)" ]]; then
@@ -92,11 +92,11 @@ if ! [[ -x "$(command -v polybar)" ]]; then
     pamac install polybar
 fi
 ### install theme
-echo "    installing theme"
-leftwm-theme install "master-pywal-theme"
+#echo "    installing theme"
+#leftwm-theme install "master-pywal-theme"
 ### apply theme
-echo "    apply theme"
-leftwm-theme apply "master-pywal-theme"
+#echo "    apply theme"
+#leftwm-theme apply "master-pywal-theme"
 ### override config.toml with themes config.toml
 echo "    override config.toml"
 cp "${LEFTWM_TARGET}themes/current/config.toml" ${LEFTWM_TARGET}
@@ -109,10 +109,10 @@ echo "done"
 echo
 
 ##zshrc-personal
-echo "copying zshrc-personal"
-sudo cp -f $ZSHRC_PERSONAL_SOURCE $ZSHRC_PERSONAL_TARGET
-echo "done"
-echo
+#echo "copying zshrc-personal"
+#sudo cp -f $ZSHRC_PERSONAL_SOURCE $ZSHRC_PERSONAL_TARGET
+#echo "done"
+#echo
 
 ##vimrc
 echo "copying vimrc"
@@ -120,11 +120,11 @@ sudo cp -f $VIMRC_SOURCE $VIMRC_TARGET
 echo "done"
 echo
 
-echo "setting GTK theme to my custom theme"
+#echo "setting GTK theme to my custom theme"
 ###set gtk 
-sudo sed -i 's/gtk-theme-name=/gtk-theme-name=BloodMoon\n# /' $GTK3_SETTINGS
-echo "done"
-echo
+#sudo sed -i 's/gtk-theme-name=/gtk-theme-name=BloodMoon\n# /' $GTK3_SETTINGS
+#echo "done"
+#echo
 
 # phase 2
 echo "################################################################## "
@@ -137,51 +137,51 @@ echo "     - add alias for brightness script to .zshrc-personal"
 echo "     - modify sxhkdrc to use brightness script rather than xbacklight"
 echo "################################################################## "
 
-read -p "do you want to install the cursor theme? y/n" -n 1 -r cursorYN
-echo
-case $cursorYN in
-	y | Y) 
-        ###copy cursor themes to the root user
-        sudo cp -rf $CURSOR_SOURCE $CURSOR_ROOT_TARGET
-        ###set cursor
-        sudo sed -i 's/gtk-cursor-theme-name=/gtk-cursor-theme-name=BloodMoon-Cursor\n# /' $GTK3_SETTINGS
-        ###cursor for sddm
-        sudo sed -i 's/CursorTheme=/CursorTheme=BloodMoon-Cursor\nCurrent=BloodMoon-sugar-candy\n# /' $SDDM_CONF
-        ;;
-	*) ##do not install
-		;;
-esac
+#read -p "do you want to install the cursor theme? y/n" -n 1 -r cursorYN
+#echo
+#case $cursorYN in
+#	y | Y) 
+#        ###copy cursor themes to the root user
+#        sudo cp -rf $CURSOR_SOURCE $CURSOR_ROOT_TARGET
+#        ###set cursor
+#        sudo sed -i 's/gtk-cursor-theme-name=/gtk-cursor-theme-name=BloodMoon-Cursor\n# /' $GTK3_SETTINGS
+#        ###cursor for sddm
+#        sudo sed -i 's/CursorTheme=/CursorTheme=BloodMoon-Cursor\nCurrent=BloodMoon-sugar-candy\n# /' $SDDM_CONF
+#        ;;
+#	*) ##do not install
+#		;;
+#esac
 
-read -p "do your brightness keys work as intended? y/n" -n 1 -r brightnessYN
-echo
-case $brightnessYN in
-	n | N) ##modify sxhkdrc of leftwm-theme and .zshrc-personal, also copy the brightness changing script, and make it so that said script can run without needing a sudo password
-        
-        ###copy brighness changing script
-        cd /home/${USER}/.bin/
-        mkdir my-scripts
-        cd /home/${USER}/
-        cp -f "${SCRIPT_SOURCE}configure-brightness.sh" "${SCRIPT_TARGET}"
-        cp -f "${SCRIPT_SOURCE}configure-brightness-README.md" "${SCRIPT_TARGET}"
+#read -p "do your brightness keys work as intended? y/n" -n 1 -r brightnessYN
+#echo
+#case $brightnessYN in
+#	n | N) ##modify sxhkdrc of leftwm-theme and .zshrc-personal, also copy the brightness changing script, and make it so that said script can run without needing a sudo password
+#        
+#        ###copy brighness changing script
+#        cd /home/${USER}/.bin/
+#        mkdir my-scripts
+#        cd /home/${USER}/
+#        cp -f "${SCRIPT_SOURCE}configure-brightness.sh" "${SCRIPT_TARGET}"
+#        cp -f "${SCRIPT_SOURCE}configure-brightness-README.md" "${SCRIPT_TARGET}"
+#
+#        ###create sudoers exeption for brightness changing script
+#        echo "${USER} ALL=(ALL) NOPASSWD:${SCRIPT_TARGET}configure-brightness.sh" >> /etc/sudoers.d/brightness
+#
+#        ###modify .zshrc-personal
+#        ####add references to brightness script
+#        printf "
+#        #brightness alias
+#        alias brightness=\"sudo -n ${SCRIPT_TARGET}configure-brightness.sh\"
+#
+#        " >> ~/.zshrc-personal
+#        ###modify sxhkdrc
+#        sed -i 's/xbacklight/sudo -n ${SCRIPT_TARGET}configure-brightness.sh/g' "${LEFTWM_TARGET}themes/current/sxhkd/sxhkdrc"
 
-        ###create sudoers exeption for brightness changing script
-        echo "${USER} ALL=(ALL) NOPASSWD:${SCRIPT_TARGET}configure-brightness.sh" >> /etc/sudoers.d/brightness
-
-        ###modify .zshrc-personal
-        ####add references to brightness script
-        printf "
-        #brightness alias
-        alias brightness=\"sudo -n ${SCRIPT_TARGET}configure-brightness.sh\"
-
-        " >> ~/.zshrc-personal
-        ###modify sxhkdrc
-        sed -i 's/xbacklight/sudo -n ${SCRIPT_TARGET}configure-brightness.sh/g' "${LEFTWM_TARGET}themes/current/sxhkd/sxhkdrc"
-
-        echo "done"
-        ;;
-	*) ##do not install
-		;;
-esac
+#        echo "done"
+#        ;;
+#	*) ##do not install
+#		;;
+#esac
 
 #clean up after yourself
 echo "################################################################## "
