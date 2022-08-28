@@ -43,7 +43,7 @@ func_install() {
 }
 
 ###############################################################################
-tput setaf 3; echo "Installation of development packages";tput sgr0
+tput setaf 3; echo "Installation of other school and fun packages";tput sgr0
 ###############################################################################
 
 tput setaf 3
